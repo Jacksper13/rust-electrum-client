@@ -572,7 +572,7 @@ mod danger {
             cert: &CertificateDer<'_>,
             dss: &DigitallySignedStruct,
         ) -> Result<HandshakeSignatureValid, rustls::Error> {
-            rustls::crypto::verify_tls12_signature(message, cert, dss, &self.signature_algorithms)
+            self.inner.verify_tls12_signature(message, cert, dss)
         }
 
         fn verify_tls13_signature(
@@ -581,7 +581,7 @@ mod danger {
             cert: &CertificateDer<'_>,
             dss: &DigitallySignedStruct,
         ) -> Result<HandshakeSignatureValid, rustls::Error> {
-            rustls::crypto::verify_tls13_signature(message, cert, dss, &self.signature_algorithms)
+            self.inner.verify_tls13_signature(message, cert, dss)
         }
 
         fn supported_verify_schemes(&self) -> Vec<rustls::SignatureScheme> {
