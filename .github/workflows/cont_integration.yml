@@ -9,6 +9,7 @@ jobs:
     env:
       TEST_ELECTRUM_SERVER: fortress.qtornado.com:443
     strategy:
+      fail-fast: false
       matrix:
         rust:
           - stable # STABLE
@@ -35,6 +36,7 @@ jobs:
     name: Check
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         rust:
           - stable # STABLE
